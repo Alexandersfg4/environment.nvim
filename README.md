@@ -18,7 +18,7 @@ Using [Lazy.nvim](https://github.com/folke/lazy.nvim):
 {
   "github.com/Alexandersfg4/environment.nvim",
   config = function()
-    require('env').setup({
+    require('environment').setup({
       variables = {
         -- Your default variables here
         API_KEY = "default_value",
