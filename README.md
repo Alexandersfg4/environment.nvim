@@ -1,4 +1,4 @@
-# nvim-env-manager
+# environment.nvim 
 
 A Neovim plugin for managing environment variables with project-specific overrides and persistence.
 
@@ -16,7 +16,7 @@ A Neovim plugin for managing environment variables with project-specific overrid
 Using [Lazy.nvim](https://github.com/folke/lazy.nvim):
 ```lua
 {
-  "your-github-username/nvim-env-manager",
+  "github.com/Alexandersfg4/environment.nvim",
   config = function()
     require('env').setup({
       variables = {
@@ -27,6 +27,7 @@ Using [Lazy.nvim](https://github.com/folke/lazy.nvim):
     })
   end
 }
+```
 ## Commands
 ### :EnvSet KEY=value
 Redeclare a project-specific environment variable
