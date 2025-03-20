@@ -77,9 +77,8 @@ function M._load_env()
 
 	local project_env = M._read_env_file(env_path)
 	for key, value in pairs(project_env) do
-		if config.variables[key] then -- Only load declared variables
-			vim.env[key] = value
-		end
+		config.variables[key] = value
+		vim.env[key] = value
 	end
 end
 
@@ -90,11 +89,6 @@ function M._setup_commands()
 		local key, value = opts.args:match("^([^=]+)=(.+)$")
 		if not key or not value then
 			vim.notify("Invalid format. Use: EnvSet KEY=value", vim.log.levels.ERROR)
-			return
-		end
-
-		if not config.variables[key] then
-			vim.notify("Variable not declared in setup: " .. key, vim.log.levels.ERROR)
 			return
 		end
 
