@@ -1,14 +1,13 @@
 # environment.nvim 
 
-A Neovim plugin for managing environment variables with project-specific overrides and persistence.
+A Neovim plugin for managing environment variables with project-specific and persistence.
 
 ## Features
 
-- 🛠️ Declare default environment variables during setup
+- 🛠️ Declare persistence environment variables during setup
 - 🗂️ Project-specific overrides stored in `.idea/.nvim_env`
 - 🔄 Automatic loading of variables on Neovim startup
 - 📂 Auto-reload when changing project directories
-- 🔒 Only allows modification of pre-declared variables
 - 💻 Simple commands for variable management
 
 ## Installation
