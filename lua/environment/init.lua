@@ -133,7 +133,6 @@ function M._setup_autoconfig()
 		pattern = "*",
 		callback = function()
 			M._load_env()
-			vim.notify("Environment variables reloaded", vim.log.levels.INFO)
 		end,
 		desc = "Reload environment variables",
 	})
