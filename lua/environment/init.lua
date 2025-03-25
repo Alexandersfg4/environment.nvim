@@ -84,6 +84,16 @@ end
 
 ---Sets up plugin commands
 function M._setup_commands()
+	-- Get available environment variables for completion
+	local function complete_env_vars(arg_lead)
+		local completions = {}
+		for key, _ in pairs(config.variables) do
+			if key:lower():find(arg_lead:lower(), 1, true) == 1 then
+				table.insert(completions, key)
+			end
+		end
+		return completions
+	end
 	-- Set environment variable command
 	vim.api.nvim_create_user_command("EnvSet", function(opts)
 		local key, value = opts.args:match("^([^=]+)=(.+)$")
@@ -94,7 +104,14 @@ function M._setup_commands()
 
 		vim.env[key] = value
 		M._save_env_file(key, value)
-	end, { nargs = 1, desc = "Set environment variable" })
+		config.variables[key] = value
+	end, {
+		nargs = 1,
+		desc = "Set environment variable",
+		complete = function(arg_lead)
+			return complete_env_vars(arg_lead)
+		end,
+	})
 
 	-- Show environment variables command
 	vim.api.nvim_create_user_command("EnvShow", function()
